@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Empleado")
+@Table(name="Empleados")
 public class Empleado {
 	
 	@Id
@@ -20,5 +20,31 @@ public class Empleado {
 	{
 		return "Empleado [idempleado="+idempleado+", nombres="+nombre+", cargo="+cargo+"]";
 	}
+
+	public int getIdempleado() {
+		return idempleado;
+	}
+
+	public void setIdempleado(int idempleado) {
+		this.idempleado = idempleado;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+	
+	
 
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalles del Producto</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Detalles del Producto</h1>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>ID:</strong> <span th:text="${producto.idproducto}"></span></li>
+            <li class="list-group-item"><strong>Descripción:</strong> <span th:text="${producto.descripcion}"></span></li>
+            <li class="list-group-item"><strong>Costo Unitario:</strong> <span th:text="${producto.costounitario}"></span></li>
+            <li class="list-group-item"><strong>Costo por Blister:</strong> <span th:text="${producto.costoporblister}"></span></li>
+            <li class="list-group-item"><strong>Stock:</strong> <span th:text="${producto.stock}"></span></li>
+            <li class="list-group-item"><strong>Receta:</strong> <span th:text="${producto.receta}"></span></li>
+        </ul>
+        <a class="btn btn-primary mt-3" th:href="@{/productos/lista}">Volver a la lista</a>
+    </div>
+</body>
+</html>
