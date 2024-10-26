@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalles del entierro</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Detalles del entierro</h1>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>ID:</strong> <span th:text="${entierro.identierro}"></span></li>
+            <li class="list-group-item"><strong>Fallecido:</strong> <span th:text="${entierro.fallecido}"></span></li>
+            <li class="list-group-item"><strong>Fecha de defuncion:</strong> <span th:text="${entierro.fechadedefuncion}"></span></li>
+            <li class="list-group-item"><strong>Nombre Cliente:</strong> <span th:text="${entierro.nombrecliente}"></span></li>
+            <li class="list-group-item"><strong>Relacion:</strong> <span th:text="${entierro.relacion}"></span></li>
+			<li class="list-group-item"><strong>Cajon:</strong> <span th:text="${entierro.cajon}"></span></li>
+			<li class="list-group-item"><strong>Costo:</strong> <span th:text="${entierro.costo}"></span></li>
+			<li class="list-group-item"><strong>Fecha:</strong> <span th:text="${entierro.fecha}"></span></li>
+        </ul>
+        <a class="btn btn-primary mt-3" th:href="@{/entierros/lista}">Volver a la lista</a>
+    </div>
+</body>
+</html>
