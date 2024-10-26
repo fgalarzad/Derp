@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalles del cliente</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Detalles del cliente</h1>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>ID:</strong> <span th:text="${cliente.idcliente}"></span></li>
+            <li class="list-group-item"><strong>Nombre:</strong> <span th:text="${cliente.nombrecliente}"></span></li>
+            <li class="list-group-item"><strong>Telefono:</strong> <span th:text="${cliente.telefono}"></span></li>
+            <li class="list-group-item"><strong>Correo:</strong> <span th:text="${cliente.correo}"></span></li>
+        </ul>
+        <a class="btn btn-primary mt-3" th:href="@{/clientes/lista}">Volver a la lista</a>
+    </div>
+</body>
+</html>

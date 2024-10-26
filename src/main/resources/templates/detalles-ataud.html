@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalles del ataud</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Detalles del ataud</h1>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>ID:</strong> <span th:text="${ataud.idataud}"></span></li>
+            <li class="list-group-item"><strong>Tipo de madera:</strong> <span th:text="${ataud.tipomadera}"></span></li>
+            <li class="list-group-item"><strong>Color:</strong> <span th:text="${ataud.color}"></span></li>
+            <li class="list-group-item"><strong>Stock:</strong> <span th:text="${ataud.stock}"></span></li>
+			<li class="list-group-item"><strong>Costo:</strong> <span th:text="${ataud.costo}"></span></li>
+        </ul>
+        <a class="btn btn-primary mt-3" th:href="@{/ataudes/lista}">Volver a la lista</a>
+    </div>
+</body>
+</html>

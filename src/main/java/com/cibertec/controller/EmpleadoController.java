@@ -52,7 +52,9 @@ public class EmpleadoController {
     @GetMapping("/empleados/editar/{id}")
     public String mostrarFormularioEditar(@PathVariable int id, Model model) {
     	Empleado empleado = empleadoService.obtenerEmpleadoPorId(id);
+        List<Entierro> entierros = entierroService.listarEntierro();
         model.addAttribute("empleado", empleado);
+        model.addAttribute("entierros", entierros);
         return "editar-empleado";
     }
 

@@ -18,8 +18,7 @@
                 <th>Fallecido</th>
 				<th>Cliente</th>
 				<th>Relacion</th>
-				<th>Ataud</th>
-				<th>Costo</th>
+				<th>Tipo de Ataud y Costo</th>>
 				<th>Fecha de entierro</th>
 				
 				
@@ -32,8 +31,7 @@
                 <td th:text="${entierro.fallecido.nombrefallecido}"></td>>
 				<td th:text="${entierro.cliente.nombrecliente}"></td>
 				<td th:text="${entierro.relacion}"></td>
-				<td th:text="${entierro.ataud.tipomadera + ' ' + entierro.ataud.color}"></td>
-				<td th:text="${entierro.ataud.costo}"></td>
+				<td th:text="${entierro.ataud.tipomadera + ' ' + entierro.ataud.color + ' S/.'+ entierro.ataud.costo}"></td>
 				<td th:text="${entierro.fecha}"></td>
 				<td>
 				     <a class="btn btn-info btn-sm" th:href="@{/entierros/detalles/{id}(id=${entierro.identierro})}">Detalles</a>

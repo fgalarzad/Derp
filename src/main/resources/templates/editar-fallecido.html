@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar fallecido</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Editar fallecido</h1>
+		<form th:action="@{/fallecidos/actualizar}" th:object="${fallecido}" method="post">
+			<input type="hidden" th:field="*{idfallecido}" />
+		          
+		            <div class="mb-3">
+		                <label for="nombrefallecido" class="form-label">Nombre:</label>
+		                <input type="text" id="nombrefallecido" th:field="*{nombrefallecido}" class="form-control" placeholder="Ingrese el nombre del fallecido" required>
+		            </div>
+					<div class="mb-3">
+					<label for="fechadedefuncion" class="form-label">Fecha de defuncion:</label>
+					<input type="date" id="fechadedefuncion" th:field="*{fechadedefuncion}" class="form-control" placeholder="Ingrese la fecha de defuncion" required>
+					</div>			   
+					<div class="mb-3">
+						<label for="causademuerte" class="form-label">Causa de muerte:</label>
+						<input type="text" id="causademuerte" th:field="*{causademuerte}" class="form-control" placeholder="Ingrese la Causa de muerte" required>
+					</div>
+					<button type="submit" class="btn btn-primary">Actualizar fallecido</button>
+					            <a class="btn btn-secondary" th:href="@{/fallecidos/lista}">Cancelar</a>
+					        </form>
+					    </div>
+</body>
+</html>

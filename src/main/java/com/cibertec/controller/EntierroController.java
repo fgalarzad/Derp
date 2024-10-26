@@ -67,12 +67,24 @@ public class EntierroController {
     @GetMapping("/entierros/editar/{id}")
     public String mostrarFormularioEditar(@PathVariable int id, Model model) {
     	Entierro entierro = entierroService.obtenerEntierroPorId(id);
+    	List<Cliente> clientes = clienteService.listarCliente();
+    	List<Fallecido> fallecidos = fallecidoService.listarFallecido();
+    	List<Ataud> ataudes = ataudService.listarAtaud();
         model.addAttribute("entierro", entierro);
+        model.addAttribute("clientes", clientes);
+        model.addAttribute("fallecidos", fallecidos);
+        model.addAttribute("ataudes", ataudes);
         return "editar-entierro";
     }
 
-    @PostMapping("/Atauds/actualizar")
+    @PostMapping("/entierros/actualizar")
     public String actualizarEntierro(@ModelAttribute("entierro") Entierro entierro) throws Exception {
+    	Cliente cliente = clienteService.obtenerClientePorId(entierro.getCliente().getIdcliente());
+    	Fallecido fallecido = fallecidoService.obtenerFallecidoPorId(entierro.getFallecido().getIdfallecido());
+    	Ataud ataud = ataudService.obtenerAtaudPorId(entierro.getAtaud().getIdataud());
+    	entierro.setCliente(cliente);
+    	entierro.setFallecido(fallecido);
+    	entierro.setAtaud(ataud);
     	entierroService.addEntierro(entierro); // Utilizamos el mismo método de guardado
         return "redirect:/entierros/lista";
     }

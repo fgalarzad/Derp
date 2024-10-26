@@ -29,7 +29,7 @@
 
 			<div class="mb-3">
 					 <label for="entierro" class="form-label">Entierro:</label>
-					 <select id="entierro" th:field="*{entierro.identierro}" class="form-select" >
+					 <select id="entierro" th:field="*{entierro.identierro}" class="form-select" required>
 					<option th:each="entierro : ${entierros}"
 					 th:value="${entierro.identierro}"
 					 th:text="${entierro.identierro}">
