@@ -33,7 +33,6 @@ public class EmpleadoController {
         model.addAttribute("entierros", entierros);
         return "registro-empleado";
     }
-
    
     @PostMapping("/empleados/registrar")
     public String registrarEmpleado(@ModelAttribute("empleado") Empleado empleado) throws Exception {

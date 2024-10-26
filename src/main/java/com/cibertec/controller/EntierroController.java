@@ -10,25 +10,49 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.cibertec.model.Ataud;
+import com.cibertec.model.Cliente;
 import com.cibertec.model.Entierro;
+import com.cibertec.model.Fallecido;
+import com.cibertec.service.AtaudService;
+import com.cibertec.service.ClienteService;
 import com.cibertec.service.EntierroService;
+import com.cibertec.service.FallecidoService;
 
 @Controller
 public class EntierroController {
 	@Autowired
     private EntierroService entierroService;
-
+	@Autowired
+    private ClienteService clienteService;
+	@Autowired
+    private FallecidoService fallecidoService;
+	@Autowired
+    private AtaudService ataudService;
    
     @GetMapping("/entierros/nuevo")
     public String mostrarFormularioRegistro(Model model) {
     	Entierro entierro = new Entierro();
+    	List<Cliente> clientes = clienteService.listarCliente();
+    	List<Fallecido> fallecidos = fallecidoService.listarFallecido();
+    	List<Ataud> ataudes = ataudService.listarAtaud();
         model.addAttribute("entierro", entierro);
+        model.addAttribute("clientes", clientes);
+        model.addAttribute("fallecidos", fallecidos);
+        model.addAttribute("ataudes", ataudes);
+        
         return "registro-entierro";
     }
 
    
     @PostMapping("/entierros/registrar")
     public String registrarEntierro(@ModelAttribute("entierro") Entierro entierro) throws Exception {
+    	Cliente cliente = clienteService.obtenerClientePorId(entierro.getCliente().getIdcliente());
+    	Fallecido fallecido = fallecidoService.obtenerFallecidoPorId(entierro.getFallecido().getIdfallecido());
+    	Ataud ataud = ataudService.obtenerAtaudPorId(entierro.getAtaud().getIdataud());
+    	entierro.setCliente(cliente);
+    	entierro.setFallecido(fallecido);
+    	entierro.setAtaud(ataud);
     	entierroService.addEntierro(entierro);
         return "redirect:/entierros/lista";
     }
@@ -47,20 +71,20 @@ public class EntierroController {
         return "editar-entierro";
     }
 
-    @PostMapping("/entierros/actualizar")
+    @PostMapping("/Atauds/actualizar")
     public String actualizarEntierro(@ModelAttribute("entierro") Entierro entierro) throws Exception {
     	entierroService.addEntierro(entierro); // Utilizamos el mismo método de guardado
         return "redirect:/entierros/lista";
     }
 
     @GetMapping("/entierros/eliminar/{id}")
-    public String eliminarProducto(@PathVariable int id) {
+    public String eliminarEntierro(@PathVariable int id) {
     	entierroService.eliminarEntierro(id);
         return "redirect:/entierros/lista";
     }
 
     @GetMapping("/entierros/detalles/{id}")
-    public String verDetallesProducto(@PathVariable int id, Model model) {
+    public String verDetallesEntierro(@PathVariable int id, Model model) {
     	Entierro entierro = entierroService.obtenerEntierroPorId(id);
         model.addAttribute("entierro", entierro);
         return "detalles-entierro";

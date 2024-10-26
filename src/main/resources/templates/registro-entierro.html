@@ -10,53 +10,46 @@
     <div class="container mt-5">
         <h1 class="mb-4 text-center">Registrar Entierro</h1>
         <form th:action="@{/entierros/registrar}" th:object="${entierro}" method="post" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="fallecido" class="form-label">Fallecido:</label>
-                <input type="text" id="fallecido" th:field="*{fallecido}" class="form-control" placeholder="Ingrese el nombre del fallecido" required>
-                <div class="invalid-feedback">Por favor, ingrese el nombre del fallecido.</div>
-            </div>
-
-            <div class="mb-3">
-                <label for="fechadedefuncion" class="form-label">Fecha de defuncion:</label>
-                <input type="date" id="fechadedefuncion" th:field="*{fechadedefuncion}" class="form-control" placeholder="Ingrese la fecha de defuncion" required>
-                <div class="invalid-feedback">Por favor, ingrese la fecha de defuncion.</div>
-            </div>
-
-            <div class="mb-3">
-                <label for="nombrecliente" class="form-label">Nombre del cliente:</label>
-                <input type="text" id="nombrecliente" th:field="*{nombrecliente}" class="form-control" placeholder="Ingrese el nombre del cliente" required>
-                <div class="invalid-feedback">Por favor, ingrese el nombre del cliente.</div>
-            </div>
+			<div class="mb-3">
+				<label for="fallecido" class="form-label">Fallecido:</label>
+				<select id="fallecido" th:field="*{fallecido.idfallecido}" class="form-select" >
+				<option th:each="fallecido : ${fallecidos}"
+				th:value="${fallecido.idfallecido}"
+				th:text="${fallecido.nombrefallecido}">
+				</option>
+				</select><br/>
+				<div class="invalid-feedback">Por favor, seleccione el fallecido.</div>
+		    </div>
+			<div class="mb-3">
+							<label for="cliente" class="form-label">Nombre del cliente:</label>
+							<select id="cliente" th:field="*{cliente.idcliente}" class="form-select" >
+							<option th:each="cliente : ${clientes}"
+									th:value="${cliente.idcliente}"
+									th:text="${cliente.nombrecliente}">
+							</option>
+							</select><br/>
+							<div class="invalid-feedback">Por favor, seleccione el nombre del cliente.</div>
+						</div>
 
             <div class="mb-3">
                 <label for="relacion" class="form-label">Relacion:</label>
                 <input type="text" id="relacion" th:field="*{relacion}" class="form-control" placeholder="Ingrese la relacion" required>
                 <div class="invalid-feedback">Por favor, ingrese la relacion.</div>
             </div>
-            <div class="mb-3">
-                <label for="cajon" class="form-label">Ataud:</label>
-                <select id="cajon" th:field="*{cajon}" class="form-select" required>
-                    <option value="" disabled selected>Seleccione una opción</option>
-                    <option value="roble">Cajon de roble</option>
-					<option value="caoba">Cajon de caoba </option>
-					<option value="nogal">Cajon de nogal  </option>
-					<option value="cerezo">Cajon de cerezo </option>
-					<option value="arce">Cajon de arce  </option>
-					<option value="olmo">Cajon de olmo   </option>
-					<option value="pino">Cajon de pino  </option>
-					<option value="álamo">Cajon de álamo   </option>
-                </select>
-                <div class="invalid-feedback">Por favor, seleccione el cajon.</div>
-            </div>
 			<div class="mb-3">
-			         <label for="costo" class="form-label">Costo:</label>
-			         <input type="text" id="costo" th:field="*{costo}" class="form-control" placeholder="Ingrese el costo" required>
-			         <div class="invalid-feedback">Por favor, ingrese el costo.</div>
-		    </div>
-			<div class="mb-3">
-			                <label for="fecha" class="form-label">Fecha de entierro:</label>
-			                <input type="date" id="fecha" th:field="*{fecha}" class="form-control" placeholder="Ingrese la fecha de entierro" required>
-			                <div class="invalid-feedback">Por favor, ingrese la fecha de enteirro.</div>
+				<label for="ataud" class="form-label">Tipo Ataud Y Costo:</label>
+				<select id="ataud" th:field="*{ataud.idataud}" class="form-select" >
+				<option th:each="ataud : ${ataudes}"
+						th:value="${ataud.idataud}"
+						th:text="${ataud.tipomadera + ' ' + ataud.color + '  S/.' +ataud.costo}">
+				</option>
+				</select><br/>
+				<div class="invalid-feedback">Por favor, seleccione el tipo de Ataud y costo.</div>
+			</div>
+            
+			     <label for="fecha" class="form-label">Fecha de entierro:</label>
+			     <input type="date" id="fecha" th:field="*{fecha}" class="form-control" placeholder="Ingrese la fecha de entierro" required>
+			     <div class="invalid-feedback">Por favor, ingrese la fecha de enteirro.</div>
 			</div>
             <button type="submit" class="btn btn-primary w-100">Registrar</button>
         </form>

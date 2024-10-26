@@ -16,12 +16,11 @@
             <tr>
                 <th>ID</th>
                 <th>Fallecido</th>
-                <th>Fecha de defuncion</th>
-				<th>Nombre Cliente:</th>
+				<th>Cliente</th>
 				<th>Relacion</th>
-				<th>Cajon:</th>
-				<th>Costo:</th>
-				<th>Fecha de entierro:</th>
+				<th>Ataud</th>
+				<th>Costo</th>
+				<th>Fecha de entierro</th>
 				
 				
 				
@@ -30,12 +29,11 @@
         <tbody>
             <tr th:each="entierro : ${entierros}">
                 <td th:text="${entierro.identierro}"></td>
-                <td th:text="${entierro.fallecido}"></td>
-                <td th:text="${entierro.fechadedefuncion}"></td>
-				<td th:text="${entierro.nombrecliente}"></td>
+                <td th:text="${entierro.fallecido.nombrefallecido}"></td>>
+				<td th:text="${entierro.cliente.nombrecliente}"></td>
 				<td th:text="${entierro.relacion}"></td>
-				<td th:text="${entierro.cajon}"></td>
-				<td th:text="${entierro.costo}"></td>
+				<td th:text="${entierro.ataud.tipomadera + ' ' + entierro.ataud.color}"></td>
+				<td th:text="${entierro.ataud.costo}"></td>
 				<td th:text="${entierro.fecha}"></td>
 				<td>
 				     <a class="btn btn-info btn-sm" th:href="@{/entierros/detalles/{id}(id=${entierro.identierro})}">Detalles</a>

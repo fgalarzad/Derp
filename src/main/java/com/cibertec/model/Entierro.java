@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -17,15 +19,29 @@ public class Entierro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int identierro;
-	private String nombrecliente,fallecido,relacion,costo,cajon,fechadedefuncion,fecha;
+	 private String relacion;
+	    private String fecha;
+
+    @ManyToOne
+	@JoinColumn(name = "idcliente", nullable = false)
+	private Cliente cliente;
+
+	@ManyToOne
+	@JoinColumn(name = "idfallecido", nullable = false)
+	private Fallecido fallecido;
+
+	@ManyToOne
+	@JoinColumn(name = "idataud", nullable = false)
+	private Ataud ataud;
 	
 	@OneToMany(mappedBy = "entierro", cascade = CascadeType.ALL)
     private List<Empleado> empleados;
+	
 	@Override
 	public String toString() 
 	{
-		return "Producto [identierro="+identierro+", fallecido="+fallecido+", fechadedefuncion="+fechadedefuncion+", nombrecliente="+nombrecliente+", relacion="
-	+relacion+", costo="+costo+", cajon="+cajon+"fecha="+fecha+"]";
+		return "Producto [identierro="+identierro+", fallecido="+fallecido+", cliente="+cliente+", ataud="+ataud+", relacion="
+	+relacion+"fecha="+fecha+"]";
 	}
 
 
@@ -39,6 +55,36 @@ public class Entierro {
 	}
 
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+
+	public Fallecido getFallecido() {
+		return fallecido;
+	}
+
+
+	public void setFallecido(Fallecido fallecido) {
+		this.fallecido = fallecido;
+	}
+
+
+	public Ataud getAtaud() {
+		return ataud;
+	}
+
+
+	public void setAtaud(Ataud ataud) {
+		this.ataud = ataud;
+	}
+
+
 	public int getIdentierro() {
 		return identierro;
 	}
@@ -49,24 +95,6 @@ public class Entierro {
 	}
 
 
-	public String getNombrecliente() {
-		return nombrecliente;
-	}
-
-
-	public void setNombrecliente(String nombrecliente) {
-		this.nombrecliente = nombrecliente;
-	}
-
-
-	public String getFallecido() {
-		return fallecido;
-	}
-
-
-	public void setFallecido(String fallecido) {
-		this.fallecido = fallecido;
-	}
 
 
 	public String getRelacion() {
@@ -76,36 +104,6 @@ public class Entierro {
 
 	public void setRelacion(String relacion) {
 		this.relacion = relacion;
-	}
-
-
-	public String getCosto() {
-		return costo;
-	}
-
-
-	public void setCosto(String costo) {
-		this.costo = costo;
-	}
-
-
-	public String getCajon() {
-		return cajon;
-	}
-
-
-	public void setCajon(String cajon) {
-		this.cajon = cajon;
-	}
-
-
-	public String getFechadedefuncion() {
-		return fechadedefuncion;
-	}
-
-
-	public void setFechadedefuncion(String fechadedefuncion) {
-		this.fechadedefuncion = fechadedefuncion;
 	}
 
 
